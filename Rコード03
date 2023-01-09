@@ -1,0 +1,1 @@
+mean(z, na.rm=TRUE)
