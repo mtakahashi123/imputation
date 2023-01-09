@@ -1,0 +1,4 @@
+model3 <- lm(x ~ y)
+model4 <- lm(z ~ y)
+summary(model3)
+summary(model4)
