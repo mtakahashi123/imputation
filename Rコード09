@@ -1,0 +1,7 @@
+set.seed(1)
+sde1 <-sd (residuals(model4))
+z3 <- z
+E1 <- rnorm(length(y[k1==0]), 0, sde1)
+z3[k1==0] <- a0 + a1 * y[k1==0] + E1
+mean(z3)
+sd(z3)
