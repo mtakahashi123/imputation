@@ -1,0 +1,18 @@
+m1 <- NULL; s1 <- NULL; b1 <- NULL; se1 <- NULL
+for(i in 1:M1){
+dataimp <- a.out$imputations[[i]]
+m1[i] <- mean(dataimp$z)
+s1[i] <- sd(dataimp$z)
+model5 <- lm(y ~ z, data=dataimp)
+b1[i] <- summary(model5)$coefficients[2, 1]
+se1[i] <- summary(model5)$coefficients[2, 2]
+}
+b1mi <- mean(b1)
+wv1 <- mean(se1^2)
+bv1 <- (1/(M1-1)) * sum((b1-mean(b1))^2)
+tv1 <- wv1 + (1+1/M1) * bv1
+se1mi <- sqrt(tv1)
+mean(m1)
+mean(s1)
+b1mi
+se1mi
