@@ -1,0 +1,2 @@
+model1 <- lm(y ~ x)
+summary(model1)
