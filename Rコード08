@@ -1,0 +1,6 @@
+a0 <- summary(model4)$coefficients[1, 1]
+a1 <- summary(model4)$coefficients[2, 1]
+z2 <- z
+z2[k1==0] <- a0 + a1 * y[k1==0]
+mean(z2)
+sd(z2)
