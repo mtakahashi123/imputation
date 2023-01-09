@@ -1,0 +1,7 @@
+set.seed(1)
+library(Amelia)
+df1 <- data.frame(z, y)
+M1 <- 100
+a.out <- amelia(df1, m=M1)
+a.out$imputations[[1]]
+a.out$imputations[[2]]
