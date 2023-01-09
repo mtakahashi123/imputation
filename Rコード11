@@ -1,0 +1,10 @@
+dataimp1 <- a.out$imputations[[1]]
+dataimp2 <- a.out$imputations[[2]]
+mean(dataimp1$z)
+mean(dataimp2$z)
+sd(dataimp1$z)
+sd(dataimp2$z)
+modela1 <- lm(y ~ z, data=dataimp1)
+modela2 <- lm(y ~ z, data=dataimp2)
+summary(modela1)
+summary(modela2)
