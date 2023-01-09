@@ -1,3 +1,0 @@
-data1 <- read.csv(file.choose( ))
-attach(data1)
-summary(data1)
