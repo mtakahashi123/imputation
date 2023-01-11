@@ -1,6 +1,21 @@
+#Rコード08で構築した代入モデル（model4）のパラメータ推定値を取り出す．
+#summary(model4)$coefficientsとは，model4の結果の中で，回帰係数，標準誤差，t値，p値を表示している部分である．
+#summary(model4)$coefficientsは，2行×4列の行列なので，1行目1列の値が切片である．
 a0 <- summary(model4)$coefficients[1, 1]
+
+#summary(model4)$coefficientsは，2行×4列の行列なので，2行目1列の値が傾きである．
 a1 <- summary(model4)$coefficients[2, 1]
+
+#新しい変数z2を作って，その中身はzと同じものとして生成する．
 z2 <- z
+
+#[]の中は条件を表す．k1が0であるならば，z2はa0 + a1 * y[k1==0]の値に置き換える．
+#a0 + a1 * yは代入モデルである．
+#y[k1==0]は，k1が0であるときのyの値を表す．
 z2[k1==0] <- a0 + a1 * y[k1==0]
+
+#mean関数でz2の平均値を計算
 mean(z2)
+
+#sd関数でz2の標準偏差を計算
 sd(z2)
