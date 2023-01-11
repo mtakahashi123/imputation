@@ -1,10 +1,29 @@
+#簡単のため，100セットの多重代入済みデータの中から，最初の2つだけを使って解析方法の仕方を解説する．
+
+#m = 1の代入済みデータにdataimp1と名付ける．
 dataimp1 <- a.out$imputations[[1]]
+
+#m = 2の代入済みデータにdataimp2と名付ける．
 dataimp2 <- a.out$imputations[[2]]
+
+#m = 1の代入済みデータにおけるzの平均値
 mean(dataimp1$z)
+
+#m = 2の代入済みデータにおけるzの平均値
 mean(dataimp2$z)
+
+#m = 1の代入済みデータにおけるzの標準偏差
 sd(dataimp1$z)
+
+#m = 2の代入済みデータにおけるzの標準偏差
 sd(dataimp2$z)
+
+#m = 1の代入済みデータを使って，zからyへの単回帰モデルを作成して，modela1と名付ける．
 modela1 <- lm(y ~ z, data=dataimp1)
+
+#m = 2の代入済みデータを使って，zからyへの単回帰モデルを作成して，modela2と名付ける．
 modela2 <- lm(y ~ z, data=dataimp2)
+
+#summary関数により，modela1とmodela2の結果を表示する．
 summary(modela1)
 summary(modela2)
