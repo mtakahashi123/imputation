@@ -1,3 +1,10 @@
 data1 <- read.csv(file.choose( ))
-attach(data1)
+#上記のコードをコピーして，Rのコンソールに貼り付ける．
+#ポップアップウィンドウが開くので，data1.csvを保存した
+#フォルダを開いて，data1.csvをクリックしてRに読み込む．
+
+#data1をアクティブ化する．
+attach(data1)  
+
+#data1の基本統計量を表示する．
 summary(data1)
