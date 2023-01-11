@@ -31,5 +31,7 @@ a.out$imputations[[2]]
 #m = 3
 a.out$imputations[[3]]
 
+#m = 4からm = 99は省略
+
 #m = 100
 a.out$imputations[[100]]
