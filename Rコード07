@@ -1,4 +1,9 @@
+#lm関数により，単回帰モデルを作って，model3と名付ける．
 model3 <- lm(x ~ y)
+
+#lm関数により，単回帰モデルを作って，model4と名付ける．
 model4 <- lm(z ~ y)
+
+#summary関数により，単回帰モデルの解析結果を表示する．
 summary(model3)
 summary(model4)
