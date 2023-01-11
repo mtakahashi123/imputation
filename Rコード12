@@ -1,18 +1,72 @@
-m1 <- NULL; s1 <- NULL; b1 <- NULL; se1 <- NULL
+#100セットのデータ全てに対して手作業で計算をすることは面倒なので，forループで自動化する．
+#forループの中に登場する計算結果を格納するための空の変数を定義しておく．
+
+#平均値（mean）
+m1 <- NULL
+
+#標準偏差（standard deviation）
+s1 <- NULL
+
+#回帰モデルの傾き（β1）
+b1 <- NULL
+
+##回帰モデルの傾きの標準誤差（standard error）
+se1 <- NULL
+
+#####################
+#ここからforループ開始：1からM1まで作業を繰り返す．
 for(i in 1:M1){
-dataimp <- a.out$imputations[[i]]
-m1[i] <- mean(dataimp$z)
-s1[i] <- sd(dataimp$z)
-model5 <- lm(y ~ z, data=dataimp)
-b1[i] <- summary(model5)$coefficients[2, 1]
-se1[i] <- summary(model5)$coefficients[2, 2]
+ #i番目の多重代入済みデータを取り出してdataimpと名付ける．
+ dataimp <- a.out$imputations[[i]]
+ 
+ #i番目の多重代入済みデータにおけるzの平均値を計算してm1に格納する．
+ m1[i] <- mean(dataimp$z)
+ 
+ #i番目の多重代入済みデータにおけるzの標準偏差を計算してs1に格納する．
+ s1[i] <- sd(dataimp$z)
+ 
+ #i番目の多重代入済みデータを使って，zからyへの回帰モデルを作る．
+ model5 <- lm(y ~ z, data=dataimp) 
+ 
+ #model5の傾きを取り出して，b1に格納する．
+ b1[i] <- summary(model5)$coefficients[2, 1]
+ 
+ #model5の傾きの標準誤差を取り出して，se1に格納する．
+ se1[i] <- summary(model5)$coefficients[2, 2]
 }
+#この記号はforループの終わりを意味する．
+#つまり，{}でくくられている部分をM1回繰り返すという作業を実行している．
+#####################
+
+#式（9）により，100個のb1を統合する．
 b1mi <- mean(b1)
+
+#式（11）により，代入内分散を統合する．
 wv1 <- mean(se1^2)
+
+#式（13）により，代入間分散を統合する．
 bv1 <- (1/(M1-1)) * sum((b1-mean(b1))^2)
+
+#式（15）により，全体の分散を統合する．
 tv1 <- wv1 + (1+1/M1) * bv1
+
+#sqrt関数により，tv1の平方根（square root）を計算して，統合した標準誤差をse1miと名付ける．
 se1mi <- sqrt(tv1)
+
+#式（9）により，100個のm1を統合する．これがxの平均値を推定したものである．
 mean(m1)
+
+#式（9）により，100個のs1を統合する．これがxの標準偏差を推定したものである．
 mean(s1)
+
+#統合した回帰の傾きを表示する．
 b1mi
+
+#統合した回帰の傾きの標準誤差を表示する．
 se1mi
+
+#95%信頼区間の上限
+b1mi + 1.96 * se1mi
+
+#95%信頼区間の下限
+b1mi - 1.96 * se1mi
