@@ -1,7 +1,18 @@
+#確率的代入法は乱数を用いるので，同じ結果を再現できるように，乱数のシード値を固定する．
+#括弧の中の数字は任意の整数である．
 set.seed(1)
-sde1 <-sd (residuals(model4))
+
+#代入モデル（model4）の残差を計算して，resid1と名付ける．
+resid1 <- residuals(model4)
+
+#代入モデル（model4）の残差の標準偏差を計算して，sde1と名付ける．
+sde1 <-sd (resid1)
+
+
 z3 <- z
-E1 <- rnorm(length(y[k1==0]), 0, sde1)
+n2 <- length(y[k1==0])
+
+E1 <- rnorm(n2, 0, sde1)
 z3[k1==0] <- a0 + a1 * y[k1==0] + E1
 mean(z3)
 sd(z3)
