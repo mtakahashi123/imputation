@@ -1,2 +1,5 @@
+#lm関数により，単回帰モデルを作って，model1と名付ける．
 model1 <- lm(y ~ x)
+
+#summary関数により，単回帰モデルの解析結果を表示する．
 summary(model1)
