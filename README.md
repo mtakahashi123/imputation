@@ -3,4 +3,4 @@
 「Code」をクリックして，「Download ZIP」をクリックすれば，data1.csvおよびRコードをダウンロードできる．ダウンロードしたRコードは，メモ帳で開けば中身を閲覧できる．
 
 『社会と調査』第30号
-https://jasr.or.jp/asr/new/
+https://jasr.or.jp/asr/30/
